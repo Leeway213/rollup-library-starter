@@ -9,10 +9,11 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "types": "tsc --emitDeclarationOnly",
-    "build:prod": "rollup -c --environment PRODUCTION,CJS,ES,IIFE",
-    "build:dev": "rollup -c --environment DEVELOPMENT,CJS,ES,IIFE",
+    "build:esm": "tsc --outDir ./dist/esm",
+    "build:prod": "rollup -c --environment PRODUCTION,CJS,IIFE",
+    "build:dev": "rollup -c --environment DEVELOPMENT,CJS,IIFE",
     "prebuild": "npm run clean",
-    "build": "npm run types && npm run build:prod",
+    "build": "npm run types && npm run build:esm && npm run build:prod",
     "serve": "rollup -c -w --environment DEVELOPMENT,SERVE,IIFE",
     "bundle": "rollup -c --environment PRODUCTION,IIFE",
     "doc:api": "esdoc"
@@ -22,9 +23,9 @@
       "pre-commit": "npm run lint"
     }
   },
-  "main": "dist/main/tide.js",
-  "module": "dist/esm/tide.js",
-  "browser": "dist/browser/tide.js",
+  "main": "dist/main/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/browser/index.js",
   "types": "dist/types/index.d.ts",
   "author": {
     "name": "leeway.zlw",

@@ -25,7 +25,7 @@ export default function () {
     IIFE && {
       file: pkg.browser,
       format: 'iife',
-      name: pkg.name.toUpperCase(),
+      name: pkg.name.toUpperCase().replace('-', '_'),
       sourcemap: !PROD,
 
       // https://rollupjs.org/guide/en#output-globals-g-globals
